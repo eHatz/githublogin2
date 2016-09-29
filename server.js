@@ -12,8 +12,8 @@ app.use(logger('dev'));
 
 
 passport.use(new GitHubStrategy({
-	clientID: 'd78582dd6532f66c0570',
-	clientSecret: '820adf2307b15ae347f8dac703ccdd82d06f619a',
+	clientID: '',
+	clientSecret: '',
 	callbackURL: "http://localhost:3000/login/github/return"
 }, function(accessToken, refreshToken, profile, cb) {
 	return cb(null, profile);
@@ -21,13 +21,11 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.serializeUser(function(user, cb) {
-	// console.log('++++++++++++++++++++++++++++++++++++++++++++++++++', user, '++++++++++++++++++++++++++++++++++++++++++++++++++');
-  cb(null, user);
+	cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {
-	// console.log('++++++++++++++++++++++++++++++++++++++++++++++++++', user, '++++++++++++++++++++++++++++++++++++++++++++++++++');
-  cb(null, obj);
+	cb(null, obj);
 });
 
 app.use(require('morgan')('combined'));
